@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo</title>
+<script defer src="/main.js"></script></head>
+<body>
+    <div id="head">
+        <h1>Todo List</h1>
+    </div>
+
+    <div id="content">
+        <div id="side-div">
+            <div>
+                <h3>Projects</h3>
+                <div id="project-div"></div>
+            </div>
+            <div id="project-form">
+                <h4>Create new project</h4>
+                <form action="javascript:void(0);">
+                    <input type="text" id="add-name" placeholder="New project">
+                    <input type="submit" id="project-submit" value="Add">
+                    <a aria-label="Close">&#10006;</a>
+                </form>
+            </div>
+            <div id="button-div">
+                <button id="add-project">+ Project</button>
+                <button id="add-todo">+ Todo</button>
+            </div>
+        </div>
+
+        <div id="todo-div">
+            <h3 id="project-name"></h3>
+            <table>
+                <tbody id="todos"></tbody>
+            </table>
+
+            <div id="add-form">
+                <h4>Create new todo</h4>
+                <form action="javascript:void(0);">
+                    <input type="text" id="add-title" placeholder="New todo">
+                    <input type="date" id="add-date" placeholder="Due date">
+                    <label for="priority">Priority :
+                        <select name="priority" id="add-priority">
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </label>
+                    <input type="submit" id="add-submit" value="Add">
+                    <a aria-label="Close">&#10006;</a>
+                </form>
+            </div>
+        
+            <div id="edit-form">
+                <h4>Edit todo</h4>
+                <form action="javascript:void(0);">
+                    <input type="text" id="edit-todo" hidden>
+                    <input type="checkbox" id="is-complete" hidden>
+                    <input type="text" id="edit-title">
+                    <input type="date" id="edit-date">
+                    <label for="priority">Priority:
+                        <select name="priority" id="edit-priority">
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </label>
+                    <input type="submit" id="edit-submit" value="Save">
+                    <a aria-label="Close">&#10006;</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">bereketab @ TOP</div>
+</body>
+</html>
