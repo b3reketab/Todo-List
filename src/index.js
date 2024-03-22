@@ -1,3 +1,7 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-use-before-define */
 import "./style.css";
 
 const allTodo = { Today: [] };
@@ -51,7 +55,7 @@ function editTodo(project, todoItem) {
   document.getElementById("edit-date").value = allTodo[project][todoItem].date;
   document.getElementById("edit-priority").value =
     allTodo[project][todoItem].priority;
-  document.getElementById("edit-todo").value = project + " " + todoItem;
+  document.getElementById("edit-todo").value = `${project} ${todoItem}`;
   document.getElementById("is-complete").checked =
     allTodo[project][todoItem].isComplete;
 
@@ -85,9 +89,7 @@ function changeCurrProject(project) {
   currProject = project;
 }
 
-function getCurrProject() {
-  return currProject;
-}
+const getCurrProject = () => currProject;
 
 function renderAddForm() {
   document.getElementById("add-form").style.display = "block";
@@ -115,8 +117,8 @@ function renderPriority(todoItem, row) {
 
 function renderComplete(todoItem, row) {
   todoItem.isComplete
-    ? (row.style.textDecoration = "line-through")
-    : (row.style.textDecoration = "none");
+    ? row.style.textDecoration = "line-through"
+    : row.style.textDecoration = "none"
 }
 
 function renderAll(data) {
@@ -140,10 +142,12 @@ function renderAll(data) {
   tbody.innerHTML = "";
 
   for (const key in data) {
-    const projectName = document.createElement("button");
-    projectName.innerText = key;
-    projectName.dataset.prop = key;
-    projectDiv.appendChild(projectName);
+    if(Object.hasOwn(data, key)) {
+        const projectName = document.createElement("button");
+        projectName.innerText = key;
+        projectName.dataset.prop = key;
+        projectDiv.appendChild(projectName);
+    }
   }
 
   projectDiv.addEventListener("click", (e) => {
@@ -171,10 +175,10 @@ function renderAll(data) {
       deleteTodo(project, index);
     });
 
-    let tr = tbody.insertRow();
+    const tr = tbody.insertRow();
 
-    let td0 = tr.insertCell(0);
-    let completeInput = document.createElement("input");
+    const td0 = tr.insertCell(0);
+    const completeInput = document.createElement("input");
     completeInput.type = "checkbox";
     completeInput.checked = item.isComplete;
     completeInput.addEventListener("click", (e) => {
@@ -186,19 +190,19 @@ function renderAll(data) {
     td0.style.width = "30px";
     td0.appendChild(completeInput);
 
-    let td1 = tr.insertCell(1);
-    let title = document.createTextNode(`${item.title}`);
+    const td1 = tr.insertCell(1);
+    const title = document.createTextNode(`${item.title}`);
     td1.appendChild(title);
 
-    let td2 = tr.insertCell(2);
-    let date = document.createTextNode(`${item.date}`);
+    const td2 = tr.insertCell(2);
+    const date = document.createTextNode(`${item.date}`);
     td2.appendChild(date);
 
-    let td3 = tr.insertCell(3);
+    const td3 = tr.insertCell(3);
     td3.style.width = "60px";
     td3.appendChild(editBtn);
 
-    let td4 = tr.insertCell(4);
+    const td4 = tr.insertCell(4);
     td4.style.width = "60px";
     td4.appendChild(delBtn);
 
